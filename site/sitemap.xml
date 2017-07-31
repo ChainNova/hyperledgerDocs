@@ -9,4 +9,192 @@
     </url>
     
 
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//glossary/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//getting_started/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//protocol-spec_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//build_network_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//write_first_app_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//chaincode_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//msp_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//configtx_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//configtxgen_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//configtxlator_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//endorsement-policies_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//error-handling_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//logging-control_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//arch-deep-dive_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//txflow_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//ca-setup_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//sdk_node_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//sdk_java_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//kafka_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//channels_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//ledger_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//read-write-set/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//gossip_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//msp_acl_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//sdk-design_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//makefile_zh/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://chainnova.github.io/hyperledgerDoc//cop_membership_services_v1_design/</loc>
+     <lastmod>2017-07-31</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
 </urlset>

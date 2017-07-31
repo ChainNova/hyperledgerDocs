@@ -1,17 +1,54 @@
 site_name: Hyperledger中文文档
 site_url: https://chainnova.github.io/hyperledgerDoc/
-theme: readthedocs
+repo_url: https://github.com/ChainNova/hyperledgerDoc
 site_description: 'Hyperledger中文文档'
 
+site_author: Hyperledger国际化工作组
+copyright: Hyperledger国际化工作组
+
+theme: readthedocs
+
+#docs_dir:
+pages:
+    - 欢迎贡献: index.md
+    - 词汇表: glossary.md
+    - 快速入门: getting_started.md
+    - 协议规范: protocol-spec_zh.md
+    - Fabric教程:
+      - 构建第一个fabric网络: build_network_zh.md
+      - 编写第一个应用: write_first_app_zh.md
+      - Chaincode: chaincode_zh.md
+    - Fabric操作指南:
+      - MSP: msp_zh.md
+      - Channel 配置(configtx): configtx_zh.md
+      - Channel 配置(configtxgen): configtxgen_zh.md
+      - configtxlator: configtxlator_zh.md
+      - 背书策略: endorsement-policies_zh.md
+      - 错误处理: error-handling_zh.md
+      - 日志控制: logging-control_zh.md
+    - Fabric设计:
+      - 架构说明: arch-deep-dive_zh.md
+      - 交易流程: txflow_zh.md
+      - CA: ca-setup_zh.md
+      - SDK--node: sdk_node_zh.md
+      - SDK--java: sdk_java_zh.md
+      - 基于kafka的排序服务: kafka_zh.md
+      - Channels: channels_zh.md
+      -  账本: ledger_zh.md
+      - Read-Write set: read-write-set.md
+      - Gossip数据传输协议: gossip_zh.md
+    - MSP&ACL: msp_acl_zh.md
+    - Fabric SDK 设计: sdk-design_zh.md
+    - Fabric工程项目构建之Makefile文件解析: makefile_zh.md
+    - 成员服务 v1 设计: cop_membership_services_v1_design.md
 
 markdown_extensions:
   - extra
   - tables
-  - toc
+  - toc:
+      permalink: True
   - fenced_code
   - smarty
   - mdx_math:
       enable_dollar_delimiter: True
   - footnotes
-
-
