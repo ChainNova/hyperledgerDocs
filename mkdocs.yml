@@ -1,0 +1,17 @@
+site_name: Hyperledger中文文档
+site_url: https://chainnova.github.io/hyperledgerDoc/
+theme: readthedocs
+site_description: 'Hyperledger中文文档'
+
+
+markdown_extensions:
+  - extra
+  - tables
+  - toc
+  - fenced_code
+  - smarty
+  - mdx_math:
+      enable_dollar_delimiter: True
+  - footnotes
+
+
