@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>使用MkDocs管理你的CMS系统</title>
+    <meta name="description" content="">
+    <meta name="author" content="梧桐树">
+
+    <!-- Enable responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+
+    <!-- atom & rss feed -->
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-narrow">
+          <a class="brand" href="/">区块链实用手册</a>
+          <ul class="nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/hyperledger">Hyperledger源码分析</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/devops">动手实战</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/translations">原创翻译</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/news">相关技术</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/resources">网络资源</a></li>
+      	
+      
+    
+  
+
+
+
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-narrow">
+
+      <div class="content">
+        
+
+<div class="page-header">
+  <h1>使用MkDocs管理你的CMS系统 </h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    
+<h2 id="x00-sphinxmkdocs">0x00 关于Sphinx和MkDocs</h2>
+<p>托管文档除了<a href="./deploy-jekyll-on-the-github">用Jekyll管理你的Github Pages</a>外，<a href="https://readthedocs.org/">https://readthedocs.org/</a>也是使用的非常多，上面托管的文档用<a href="http://www.sphinx-doc.org/">Sphinx</a>构建的比较多，文档也是比较复杂的，这里我们介绍一个非常好用的工具：<a href="http://www.mkdocs.org/">MkDocs</a>。</p>
+
+<p>MkDocs是研究Hyperledger的时候发现的一个工具，使用方法和配置都非常的简单，能够不用太关心建站的事情，能够聚焦到文档本身，看这个文章的长短就知道了。</p>
+
+<h2 id="x01-mkdocs">0x01 安装和使用MkDocs</h2>
+
+<p>以下的操作步骤都按最简单的写，详细一点的配置参考<a href="http://www.mkdocs.org/">官方文档</a>。</p>
+
+<ul>
+  <li>安装MkDocs</li>
+</ul>
+
+<pre><code>pip install mkdocs
+</code></pre>
+
+<ul>
+  <li>创建文档工程</li>
+</ul>
+
+<p>可以直接用mkdocs的命令：</p>
+
+<pre><code>mkdocs new my-project
+cd my-project
+</code></pre>
+
+<p>生成的目录结构如下：</p>
+
+<pre><code>xxx
+├── docs
+│   └── index.md
+└── mkdocs.yml
+
+1 directory, 2 files
+</code></pre>
+
+<p>mkdocs.yml是配置文件，默认的配置项只有一个site_name：</p>
+
+<pre><code>site_name: My Docs
+</code></pre>
+
+<p>index.md的内容是一个mkdocs的使用说明：</p>
+
+<pre><code># Welcome to MkDocs
+
+For full documentation visit [mkdocs.org](http://mkdocs.org).
+
+## Commands
+
+* `mkdocs new [dir-name]` - Create a new project.
+* `mkdocs serve` - Start the live-reloading docs server.
+* `mkdocs build` - Build the documentation site.
+* `mkdocs help` - Print this help message.
+
+## Project layout
+
+    mkdocs.yml    # The configuration file.
+    docs/
+        index.md  # The documentation homepage.
+        ...       # Other markdown pages, images and other files.
+</code></pre>
+
+<ul>
+  <li>配置MkDocs</li>
+</ul>
+
+<p>直接修改mkdocs.yml就可以，比如：</p>
+<ul>
+  <li>site_name：站点的名称
+比如我们的是这么设置的：</li>
+  <li>pages: 导航页面</li>
+  <li>theme: 站点主题</li>
+  <li>docs_dir: Markdown文档目录</li>
+  <li>site_dir: 生成的静态网页目录</li>
+  <li>dev_addr: 本地调试的监听地址和端口</li>
+  <li>markdown_extensions: 一些扩展</li>
+</ul>
+
+<p>更多的配置项参考<a href="http://www.mkdocs.org/user-guide/configuration/">官方文档</a>。</p>
+
+<p>我们的一个工程是这么设置的：</p>
+
+<pre><code>site_name: 基于Hyperledger的基金管理
+site_url: https://wutongtree.github.io/funds/
+theme: simplex
+site_description: '基于Hyperledger的基金管理'
+
+docs_dir: markdowns
+site_dir: docs
+
+pages:
+- 首页: index.md
+- 功能描述: requirements.md
+- 设计实现: designs.md
+- 安装部署: deploy.md
+
+markdown_extensions:
+  - extra
+  - tables
+  - toc
+  - fenced_code
+  - smarty
+  - mdx_math:
+      enable_dollar_delimiter: True
+  - footnotes
+
+copyright: Copyright &amp;copy; 2014-2016 &lt;a href="https://wutongtree.com" target="_blank"&gt;wutongtree.com&lt;/a&gt;
+</code></pre>
+
+<h2 id="x03-">0x03 写文章</h2>
+<p>直接在docs目录下写Markdown文档就可以，也可以创建子目录，方便文档管理。 MkDocs对Markdown文档没有侵入性，完全按照标准的格式写就可以了，不像<a href="./deploy-jekyll-on-the-githu">Jekyll</a>一样需要加一些文件头什么的，文档的链接也可以直接链接原始的Markdown文档，最终生成静态网页的时候会替换成最终的html页面。</p>
+
+<h2 id="x04-">0x04 本地测试</h2>
+
+<p>运行命令：</p>
+
+<pre><code>mkdocs serve
+</code></pre>
+
+<p>然后打开链接<a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>就可以预览了，它会监控本地页面的修改，所以一边改一边就能看到最终的效果了。</p>
+
+<h2 id="x05-">0x05 生成静态网页</h2>
+
+<p>运行命令：</p>
+
+<pre><code>mkdocs build
+</code></pre>
+
+<p>就会在site目录下看到生成的静态网页了，可以托管到任何一个空间服务商那里了。这个目录也是可以修改的，比如Github Pages用的docs目录，就可以在MkDocs里面改下。</p>
+
+<h2 id="x06-pages">0x06 解析没有在pages列表中的页面</h2>
+
+<p>官方的版本中，没有在mkdocs.yml配置文件的pages选项中出现过的页面不会转换为静态页面，也不能被其他页面链接。类似这样的错误或者警告：</p>
+
+<pre><code>WARNING -  The page "hyperledger/index.md" contained a hyperlink to "hyperledger/chaincode.md" which is not listed in the "pages" configuration.
+</code></pre>
+
+<p>这其实是他们的设计，因为他们还专门有一个选项<a href="http://www.mkdocs.org/user-guide/configuration/#strict">strict</a>来说这个事情，如果有这种链接错误的话，要不要终止构建啊 :(</p>
+
+<p>可是有的链接我确实不需要出现在导航栏，直接出现在页面的链接中就好了，否则我增加一个页面就要增加一个导航页面，文章多了就比较麻烦了。</p>
+
+<p>如果你也需要这个功能，可以用我们修改的一个版本：</p>
+
+<pre><code>git clone https://github.com/wutongtree/mkdocs.git
+cd mkdocs
+sudo python setup.py install
+</code></pre>
+
+<p>修改的版本已经给官方提交了pull request，估计是不会通过的 :)</p>
+
+<h2 id="x07-">0x07 错误</h2>
+
+<p>如果发现错误：</p>
+
+<pre><code>Traceback (most recent call last):
+  File "/usr/local/bin/mkdocs", line 11, in &lt;module&gt;
+    sys.exit(cli())
+  File "/Library/Python/2.7/site-packages/click/core.py", line 716, in __call__
+    return self.main(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/click/core.py", line 696, in main
+    rv = self.invoke(ctx)
+  File "/Library/Python/2.7/site-packages/click/core.py", line 1060, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/Library/Python/2.7/site-packages/click/core.py", line 889, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Library/Python/2.7/site-packages/click/core.py", line 534, in invoke
+    return callback(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/mkdocs/__main__.py", line 137, in build_command
+    ), clean_site_dir=clean)
+  File "/Library/Python/2.7/site-packages/mkdocs/commands/build.py", line 289, in build
+    build_pages(config)
+  File "/Library/Python/2.7/site-packages/mkdocs/commands/build.py", line 249, in build_pages
+    dump_json)
+  File "/Library/Python/2.7/site-packages/mkdocs/commands/build.py", line 169, in _build_page
+    site_navigation=site_navigation
+  File "/Library/Python/2.7/site-packages/mkdocs/commands/build.py", line 35, in convert_markdown
+    extension_configs=config['mdx_configs']
+  File "/Library/Python/2.7/site-packages/mkdocs/utils/__init__.py", line 337, in convert_markdown
+    extension_configs=extension_configs or {}
+  File "/Library/Python/2.7/site-packages/markdown/__init__.py", line 159, in __init__
+    configs=kwargs.get('extension_configs', {}))
+  File "/Library/Python/2.7/site-packages/markdown/__init__.py", line 185, in registerExtensions
+    ext = self.build_extension(ext, configs.get(ext, {}))
+  File "/Library/Python/2.7/site-packages/markdown/__init__.py", line 264, in build_extension
+    module = importlib.import_module(module_name_old_style)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+ImportError: Failed loading extension 'mdx_math' from 'mdx_math', 'markdown.extensions.mdx_math' or 'mdx_mdx_math'
+</code></pre>
+
+<p>安装一下缺的库就可以了：</p>
+
+<pre><code>sudo pip install python-markdown-math
+</code></pre>
+
+<h2 id="xff-">0xFF 总结</h2>
+<p>MkDocs非常适合不关心页面的程序员写文档了，主题也比较多，展示效果还是不错的。</p>
+
+  </div>
+</div>
+
+
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; 2016
+          <a href="" target="_blank" title="区块链实用手册">区块链实用手册</a>
+            原创文章的版权均属于 <a href="https://wutongtree.com" target="_blank" title="梧桐树">梧桐树</a> 所有，如需合作请联系<a href="mailto:hyper@crypto2x.com" target="_blank">我们</a> <br>
+	    With help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+            and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>
+          </p>
+        </footer>
+  
+    </div>
+
+    
+
+
+
+  </body>
+</html>
+
