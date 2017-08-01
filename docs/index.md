@@ -13,6 +13,10 @@
 
 以前我们用[Hyperledger Wiki](https://wiki.hyperledger.org/groups/twgc/team_ie)管理文章，但Wiki读写操作有诸多不便，为此我们将文档转移到[github上](https://github.com/ChainNova/hyperledgerDocs)，以使大家更方便地阅读和编辑贡献资源。
 
+***贡献内容包括但不限于：文档翻译、知识总结、经验教训、好文链接、奇思妙想...***
+
+***如果您不想作如下操作，可将直接内容邮件（见页面最下方）发送给工作组，我们为您发布***
+
 ### 加入组织
 
 1. 加入微信群
@@ -47,6 +51,8 @@
         | 原文 | 作者 | 审核修正 |
         | --- | --- | —--- |
         | [原文](<原文路径>) | <如果你是作者，请在此留名> | <如果你是修改者，请在此留名，可以多个> |
+    
+    图片放到`hyperledgerDocs/docs/img`里，文档中以`img/xx.png`引用。
 
     * 修改已有文档：进入`hyperledgerDocs/docs`目录，编辑对应文件。
 
