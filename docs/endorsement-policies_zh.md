@@ -1,10 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
-[原文](http://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html)
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/endorsement-policies.html) | Linsheng Yu |  |
 
-# Endorsement policies - 背书策略
 
 Endorsement policies are used to instruct a peer on how to decide whether a transaction is properly endorsed. When a peer receives a transaction, it invokes the VSCC (Validation System Chaincode) associated with the transaction’s Chaincode as part of the transaction validation flow to determine the validity of the transaction. Recall that a transaction contains one or more endorsement from as many endorsing peers. VSCC is tasked to make the following determinations: 
 

@@ -1,9 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) | Linsheng Yu |  |
 
-# Channel Configuration / Channel配置（configtx）
 
 Shared configuration for a Hyperledger Fabric blockchain network is stored in a collection configuration transactions, one per channel. Each configuration transaction is usually referred to by the shorter name ***configtx***.
 

@@ -1,81 +1,63 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
+| [原文](https://github.com/hyperledger/fabric-sdk-java) | Xuanyong Wu |  |
 
-# Java SDK for Hyperledger Fabric 1.0
-Welcome to Java SDK for Hyperledger project. The SDK helps facilitate Java applications to manage the lifecycle of
- Hyperledger channels  and user chaincode. The SDK also provides a means to execute
-  user chaincode, query blocks
- and transactions on the channel, and monitor events on the channel.
 
-The SDK acts on behave of a particular User which is defined by the embedding application through the implementation
- of the SDK's `User` interface.
+Welcome to Java SDK for Hyperledger project. The SDK helps facilitate Java applications to manage the lifecycle of Hyperledger channels  and user chaincode. The SDK also provides a means to execute user chaincode, query blocks and transactions on the channel, and monitor events on the channel.
 
-Note, the SDK does ***not*** provide a means of persistence
-  for the application defined channels and user artifacts on the client. This is left for the embedding application to best manage.
+欢迎使用Hyperledger项目的Java SDK。 该SDK帮助促进Java应用程序对Hyperledger通道和用户链码的生命周期的管理。该SDK同时提供执行用户链码、在通道上查询区块和交易以及监听通道上的事件的一些方法。
+
+The SDK acts on behave of a particular User which is defined by the embedding application through the implementation of the SDK's `User` interface.
+
+该SDK能够实现一些特定用户的行为，这是由嵌入的应用程序通过实现SDK的`User`接口来完成的。
+
+Note, the SDK does ***not*** provide a means of persistence for the application defined channels and user artifacts on the client. This is left for the embedding application to best manage.
+
+请注意，该SDK***不提供***客户端上应用定义的通道和用户结果的持久性方法。这个是预留给嵌入程序能够进行更有效的管理。
 
 The SDK also provides a client for Hyperledger's certificate authority.  The SDK is however not dependent on this
 particular implementation of a certificate authority. Other Certificate authority's maybe used by implementing the
 SDK's `Enrollment` interface.
 
- This provides a summary of steps required to get you started with building and using the Java SDK.
- Please note that this is not the API documentation or a tutorial for the SDK, this will
-  only help you familiarize to get started with the SDK if you are new in this domain.
-
-欢迎使用Hyperledger项目的Java SDK。 该SDK帮助促进Java应用程序对Hyperledger通道和用户链码的生命周期的管理。该SDK同时提供执行用户链码、在通道上查询区块和交易以及监听通道上的事件的一些方法。
-
-该SDK能够实现一些特定用户的行为，这是由嵌入的应用程序通过实现SDK的`User`接口来完成的。
-
-请注意，该SDK***不提供***客户端上应用定义的通道和用户结果的持久性方法。这个是预留给嵌入程序能够进行更有效的管理。
-
 该SDK同时提供一个连接Hyperledger证书机构的客户端。但该SDK并不依赖于这种连接证书机构的方法，用户也可以通过实现SDK的`Enrollment`接口来使用其他的证书机构。
+
+
+This provides a summary of steps required to get you started with building and using the Java SDK. Please note that this is not the API documentation or a tutorial for the SDK, this will only help you familiarize to get started with the SDK if you are new in this domain.
 
 以下步骤让你可以开始编译和使用Java SDK。
 请注意，因为这个文档不是API文档或者SDK指南，所以仅仅帮助新手熟悉如何开始使用SDK。
 
-## Known limitations and restrictions
+## 已知的限制(Known limitations and restrictions)
 
-* TCerts are not supported: JIRA FAB-1401
-* HSM not supported. JIRA FAB-3137
-* Single Crypto strength 256 JIRA FAB-2564
-* Network configuration updates not supported JIRA FAB-3103
-
-## 已知的限制
-
-* 不支持TCerts， JIRA FAB-1401
-* 不支持HSM， JIRA FAB-3137
-* 单层加密长度为256位 JIRA FAB-2564
-* 不支持网络配置更新
+* TCerts are not supported(不支持TCerts): JIRA FAB-1401
+* HSM not supported(不支持HSM): JIRA FAB-3137
+* Single Crypto strength 256(单层加密长度为256位): JIRA FAB-2564
+* Network configuration updates not supported(不支持网络配置更新): JIRA FAB-3103
 
 
 `*************************************************`
+
 ## *v1.0.0*
 
-There is a git tagged v1.0.0 [e976abdc658f212d0c3a80ace4499a5cff4279c6] release of the SDK where there is no
-need to build the Hyperledger Fabric and Hyperledger Fabric CA described below.
-The provided docker-compose.yaml for the integration tests should pull v1.0.0  tagged images from Docker hub.
+There is a git tagged v1.0.0 [e976abdc658f212d0c3a80ace4499a5cff4279c6] release of the SDK where there is no need to build the Hyperledger Fabric and Hyperledger Fabric CA described below. The provided docker-compose.yaml for the integration tests should pull v1.0.0  tagged images from Docker hub.
+
+已经有一个标记为V1.0.0[e976abdc658f212d0c3a80ace4499a5cff4279c6]的SDK发行版，所以没有必要自己打包Hyperledge Fabric和Hyperledger Fabric CA。提供集成测试的docker-compose.yaml会自动从Docker Hub下载V1.0.0的镜像。
 
 The v1.0.0 version of the Hyperledger Fabric Java SDK is published to Maven so you can directly use in your application's pom.xml.
 
-[Maven Repository Hyperledger Fabric Java SDK](https://mvnrepository.com/artifact/org.hyperledger.fabric-sdk-java/fabric-sdk-java)
-
-_Make sure you're using docker images at the level of the Fabric that matches the level of the SDK you're using in your application._
-
-已经有一个标记为V1.0.0[e976abdc658f212d0c3a80ace4499a5cff4279c6]的SDK发行版，所以没有必要自己打包Hyperledge Fabric和Hyperledger Fabric CA。
-提供集成测试的docker-compose.yaml会自动从Docker Hub下载V1.0.0的镜像。
-
 V1.0.0的Hyperledger Fabric Java SDK已经发布到了Maven仓库，你可以直接在你的应用程序的pom.xml文件中直接使用。
+
 [Maven Repository Hyperledger Fabric Java SDK](https://mvnrepository.com/artifact/org.hyperledger.fabric-sdk-java/fabric-sdk-java)
 
-请确认你使用的docker镜像的版本和你应用程序中使用的SDK版本一致。
+*Make sure you're using docker images at the level of the Fabric that matches the level of the SDK you're using in your application.*
 
-*************************************************
+_请确认你使用的docker镜像的版本和你应用程序中使用的SDK版本一致。_
+
+`*************************************************`
 
 
-## Valid builds of Fabric and Fabric-ca
-
-## 验证Fabric和Fabric-ca包
+## 验证Fabric和Fabric-ca包(Valid builds of Fabric and Fabric-ca)
 
 Hyperledger Fabric v1.0.1 is currently under active development and the very latest Hyperledger Fabric builds may not work with this sdk.
 You should use the following commit levels of the Hyperledger projects:
@@ -103,8 +85,7 @@ Project        | Commit level                               | Date              
 
 你克隆`fabric`和`fabric-ca`时，使用`git reset --hard commitlevel`来设置你仓库的使用正确的提交版本。
 
-## Working with the Fabric Vagrant environment
-## 使用Fabric Vagrant环境
+## 使用Fabric Vagrant环境(Working with the Fabric Vagrant environment)
 
 Vagrant is NOT required if your OS has Docker support and all the requirements needed to build directly in your
 environment.  For non Vagrant envrionment, the steps would be the same as below minus those parts involving Vagrant.
@@ -165,10 +146,8 @@ Add to your Vagrant file a folder for referencing the sdkintegration folder betw
   config.vm.synced_folder ENV.fetch('LOCALDEVDIR', ".."), "#{LOCALDEV}"</br>
 
 
+## SDK 依赖(SDK dependencies)
 
-
-## SDK dependencies
-## SDK 依赖
 SDK depends on few third party libraries that must be included in your classpath when using the JAR file. To get a list of dependencies, refer to pom.xml file or run
 当你使用JAR文件时，SDK依赖的第三方库应该包含在classpath中。为了可以得到依赖清单，可以参照pom.xml文件或者运行
 
@@ -178,8 +157,8 @@ SDK depends on few third party libraries that must be included in your classpath
 Alternatively, <code> mvn dependency:analyze-report </code> will produce a report in HTML format in target directory listing all the dependencies in a more readable format.
 除此之外，<code> mvn dependency:analyze-report </code> 会在目标目录中生成一个HTML格式的报告更清晰地列出所有的依赖包。
 
-## Using the SDK
-## 使用SDK
+## 使用SDK(Using the SDK)
+
 The SDK's test cases uses chaincode in the SDK's source tree: `/src/test/fixture`
 SDK的测试用例中使用链码源码树： `/src/test/fixture`
 
@@ -202,13 +181,15 @@ Add below code in your `pom.xml` to download fabric-sdk-java-1.0
      </dependencies>
 ```
 
-### Compiling
+### 编译(Compiling)
+
 To build this project, the following dependencies must be met
+
  * JDK 1.8 or above
  * Apache Maven
 
-### 编译
 为了能够编译该工程，你需要满足以下要求
+
  * JDK 1.8 或更高
  * Apache Maven
 
@@ -221,36 +202,25 @@ Once your JAVA_HOME points to your installation of JDK 1.8 (or above) and JAVA_H
 or
 <code>
   mvn install -DskipTests
-</code> if you don't want to run the unit tests
-
-<code>
-  mvn install
-</code>
-或
-<code>
-  mvn install -DskipTests
 </code> 如果你不想执行单元测试。
 
-### Running the unit tests
-### 执行单元测试
-To run the unit tests, please use <code>mvn test</code> or <code>mvn install</code> which will run the unit tests and build the jar file.
-You must be running a local peer and orderer to be able to run the unit tests.
-通过<code>mvn test</code> 来执行单元测试或 <code>mvn install</code> 执行单元测试并生成jar文件。
-你必须在本地运行了peer和orderer节点才能执行单元测试。
+### 执行单元测试(Running the unit tests)
 
-### Running the integration tests
-### 执行集成测试
+To run the unit tests, please use <code>mvn test</code> or <code>mvn install</code> which will run the unit tests and build the jar file.You must be running a local peer and orderer to be able to run the unit tests.
+
+通过<code>mvn test</code> 来执行单元测试或 <code>mvn install</code> 执行单元测试并生成jar文件。你必须在本地运行了peer和orderer节点才能执行单元测试。
+
+### 执行集成测试(Running the integration tests)
 
 You must be running local instances of Fabric-ca, Fabric peers, and Fabric orderers to be able to run the integration tests. See above for running these services in Vagrant.
 Use this `maven` command to run the integration tests:
- * _mvn failsafe:integration-test -DskipITs=false_
 
 你必须在本地运行了Fabric-ca, Fabric peers, and Fabric orderers节点才能够执行集成测试。参照上文中如何在Vagrant中运行这些服务。
 使用下面的`maven`指令来执行集成测试：
+
  * _mvn failsafe:integration-test -DskipITs=false_
 
-### End to end test scenario
-### 端到端测试场景
+### 端到端测试场景(End to end test scenario)
 
 The _src/test/java/org/hyperledger/fabric/sdkintegration/End2endIT.java_ integration test is an example of installing, instantiating, invoking and querying a chaincode.
 It constructs the Hyperledger channel, deploys the `GO` chaincode, invokes the chaincode to do a transfer amount operation and queries the resulting blockchain world state.
@@ -260,13 +230,13 @@ To better understand blockchain and Fabric concepts, we recommend you install an
 
 _src/test/java/org/hyperledger/fabric/sdkintegration/End2endIT.java_中的集成测试，是一个简单的安装、实例化、调用和查询链码的例子。它构建了Hyperledger通道，发布`GO`版本链码，调用链码，执行转账动作，并在区块链上查询结果。
 
-### End to end test environment
-### 端到端测试环境
+### 端到端测试环境(End to end test environment)
+
 The test defines one Fabric orderer and two organizations (peerOrg1, peerOrg2), each of which has 2 peers, one fabric-ca service.
+
 该测试包含一个orderer节点，两个组织(peerOrg1, peerOrg2)，每个组织各自包含两个节点，以及一个fabric-ca服务。
 
-#### Certificates and other cryptography artifacts
-#### 证书及其他加密工件
+#### 证书及其他加密工件(Certificates and other cryptography artifacts)
 
 Fabric requires that each organization has private keys and certificates for use in signing and verifying messages going to and from clients, peers and orderers.
 Each organization groups these artifacts in an **MSP** (Membership Service Provider) with a corresponding unique _MSPID_ .
@@ -308,8 +278,7 @@ Fabric同时提供`cryptogen`工具来自动生成端对端测试所需的加密
 
 端对端测试用例工件存储在_src/test/fixture/sdkintegration/e2e-2Org/channel_目录中。
 
-### TLS connection to Orderer and Peers
-### 通过TLS连接到Orderer和Peer
+### 通过TLS连接到Orderer和Peer(TLS connection to Orderer and Peers)
 
 IBM Java needs the following properties defined to use TLS 1.2 to get an HTTPS connections to Fabric CA.
 ```
@@ -349,8 +318,7 @@ IBM Java需要以下定义一下参数才能使用TLS 1.2来和Fabric CA建立HT
 目前，pom.xml设置使用netty-tcnative-boringssl在Orderer和Peer之间建立TLS连接，你可以更该pom.xml(注释其中一些行)来通过ALPN来使用其他的TLS连接。
 
 
-### Chaincode endorsement policies
-### 链码背书策略
+### 链码背书策略(Chaincode endorsement policies)
 
 Policies are described in the [Fabric Endorsement Policies document](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=blob;f=docs/endorsement-policies.md;h=1eecf359c12c3f7c1ddc63759a0b5f3141b07f13;hb=HEAD).
 You create a policy using a Fabric tool ( an example is shown in [JIRA issue FAB-2376](https://jira.hyperledger.org/browse/FAB-2376?focusedCommentId=21121&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-21121))
@@ -389,8 +357,8 @@ and one file in the _src/test/fixture/sdkintegration/e2e-2Orgs/channel_ director
 文件chaincodeendorsementpolicy.yaml中，有一些帮助理解如何创建策略的注释。第一部分列出了所有可以在策略中使用的签名。当前只支持ROLE类型。
 policy区块包含`n-of` 和 `signed-by` 元素。n-of (`1-of` `2-of`) 元素需要在这个区块中将“many” (`n`) 设置为 true. `signed-by`元素引用了在identities区块的身份信息。
 
-### Channel creation artifacts
-### 通道创建工件
+### 通道创建工件(Channel creation artifacts)
+
 Channel configuration files and orderer bootstrap files ( see directory _src/test/fixture/sdkintegration/e2e-2Orgs/channel_ ) are needed when creating a new channel.
 This is created with the Hyperledger Fabric `configtxgen` tool.
 
@@ -428,16 +396,16 @@ your server(s) hostname(s) and port(s).
 * 你将会需要修改`configtx.yaml`文件，将_MSPDir_指向到正确的_crypto-config_目录。
   * `configtx.yaml`文件当前假设你运行在Vagrant环境，而且fabric、fabric-ca 和fabric-sdk-java 在_/opt/gopath/src/github.com/hyperledger_目录下。
 
-### GO Lang chaincode
-### GO语言链码
+### GO语言链码(GO Lang chaincode)
+
 Go lang chaincode dependencies must be contained in vendor folder.
  For an explanation of this see [Vender folder explanation](https://blog.gopheracademy.com/advent-2015/vendor-folder/)
 
 Go语言链码的依赖文件必须包含在vendor目录下。
 详细解释参照[Vender folder explanation](https://blog.gopheracademy.com/advent-2015/vendor-folder/)
 
-## Basic Troubleshooting
-## 简单的问题解决
+## 简单的问题解决(Basic Troubleshooting)
+
 **identity or token do not match**
 
 Keep in mind that you can perform the enrollment process with the membership services server only once, as the enrollmentSecret is a one-time-use password. If you have performed a FSUser registration/enrollment with the membership services and subsequently deleted the crypto tokens stored on the client side, the next time you try to enroll, errors similar to the ones below will be seen.
@@ -465,8 +433,7 @@ If you get this error, this means your JDK does not capable of handling unlimite
 
 如果你碰到这个问题，就是你的JDK不支持无限长度加密逻辑。要修复这个问题，你需要下载正对你JDK版本的JCE库，请参照<a href="http://stackoverflow.com/questions/6481627/java-security-illegal-key-size-or-default-parameters">这里</a>来下载和安装JCE库。
 
-## Communicating with developers and fellow users.
-## 和开发者交流
+## 和开发者交流(Communicating with developers and fellow users)
 
  Sign into <a href="https://chat.hyperledger.org/">Hyperledger project's Rocket chat</a>
  For this you will also need a <a href="https://identity.linuxfoundation.org/">Linux Foundation ID</a>
@@ -475,8 +442,8 @@ If you get this error, this means your JDK does not capable of handling unlimite
 
  登录<a href="https://chat.hyperledger.org/">Hyperledger project's Rocket chat</a>。你需要一个<a href="https://identity.linuxfoundation.org/">Linux Foundation ID</a>。 然后加入<b>fabric-sdk-java</b>频道。
 
-## Reporting Issues
-## 报告问题
+## 报告问题(Reporting Issues)
+
 If your issue is with building Fabric development environment please discuss this on rocket.chat's #fabric-dev-env channel.
 如果你有编译Fabric开发环境的问题，请在rocket.chat的 #fabric-dev-env channel讨论。
 

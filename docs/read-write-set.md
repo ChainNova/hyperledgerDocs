@@ -1,8 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
-[原文](http://hyperledger-fabric.readthedocs.io/en/latest/readwrite.html)
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/readwrite.html) | Linsheng Yu |  |
+
 
 ## 交易模拟和read-write set
 

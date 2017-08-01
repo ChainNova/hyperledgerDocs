@@ -1,47 +1,11 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) |  |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html) | Zhangjiong Xuan |  |
 
-# 1. 构建你的第一个网络
+**Note:**These instructions have been verified to work against the version “1.0.0-rc1” tagged Docker images and the pre-compiled setup utilities within the supplied tar file. If you run these commands with images or tools from the current master branch, it is possible that you will see configuration and panic errors.
 
-<!-- TOC -->
-
-- [1. 构建你的第一个网络](#1-构建你的第一个网络)
-    - [1.1. 安装预置环境](#11-安装预置环境)
-    - [1.2. 想要现在运行吗？](#12-想要现在运行吗)
-    - [1.3. 生成网络神器](#13-生成网络神器)
-    - [1.4. 启动网络](#14-启动网络)
-    - [1.5. 关闭网络](#15-关闭网络)
-    - [1.6. 加密生成器](#16-加密生成器)
-        - [1.6.1. 它是如何工作的？](#161-它是如何工作的)
-    - [1.7. 配置交易生成器](#17-配置交易生成器)
-        - [1.7.1. 它是如何工作的？](#171-它是如何工作的)
-    - [1.8. 运行工具](#18-运行工具)
-        - [1.8.1. 手动生成配置文件](#181-手动生成配置文件)
-    - [1.9. 启动网络](#19-启动网络)
-        - [1.9.1. 环境变量](#191-环境变量)
-        - [1.9.2. 创建&加入信道](#192-创建加入信道)
-        - [1.9.3. 安装和实例化链码](#193-安装和实例化链码)
-        - [1.9.4. 查询](#194-查询)
-        - [1.9.5. 调用](#195-调用)
-        - [1.9.6. 查询](#196-查询)
-        - [1.9.7. 幕后发生了什么?](#197-幕后发生了什么)
-        - [1.9.8. 这指明了什么？](#198-这指明了什么)
-        - [1.9.9. 我如何查询这些交易？](#199-我如何查询这些交易)
-        - [1.9.10. 我如何查看链码日志？](#1910-我如何查看链码日志)
-    - [1.10. 了解 Docker Compose 技术](#110-了解-docker-compose-技术)
-    - [1.11. 使用CouchDB](#111-使用couchdb)
-    - [1.12. 关于数据持久化的提示](#112-关于数据持久化的提示)
-    - [1.13. 故障排除](#113-故障排除)
-
-<!-- /TOC -->
-
->Note
->>These instructions have been verified to work against the version “1.0.0-rc1” tagged Docker images and the pre-compiled setup utilities within the supplied tar file. If you run these commands with images or tools from the current master branch, it is possible that you will see configuration and panic errors.
-
->注意
->>这些说明已经被验证，适用于被标记“1.0.0-rc1”的Docker镜像和提供tar文件中的预编译的实用程序。如果你在当前的主分支下使用下列命令以及镜像或者工具，你可能会看到一些配置和panic错误。
+**注意：**这些说明已经被验证，适用于被标记“1.0.0-rc1”的Docker镜像和提供tar文件中的预编译的实用程序。如果你在当前的主分支下使用下列命令以及镜像或者工具，你可能会看到一些配置和panic错误。
 
 The build your first network (BYFN) scenario provisions a sample Hyperledger Fabric network consisting of two organizations, each maintaining two peer nodes, and a “solo” ordering service.
 

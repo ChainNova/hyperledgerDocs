@@ -1,18 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
-# 1. 错误处理
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/error-handling.html) | Zhangjiong Xuan |  |
 
-<!-- TOC -->
-
-- [1. 错误处理](#1-错误处理)
-    - [1.1. 总体概览](#11-总体概览)
-    - [1.2. 使用说明](#12-使用说明)
-    - [1.3. 显示错误消息](#13-显示错误消息)
-    - [1.4. Hyperledger Fabric中错误处理的一般准则](#14-hyperledger-fabric中错误处理的一般准则)
-
-<!-- /TOC -->
 
 ## 1.1. 总体概览
 

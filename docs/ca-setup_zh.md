@@ -1,9 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) |  |  |
+| [原文](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html) | Yaocheng Ye | Ruijun Ou、Zhangjiong Xuan |
 
-# Fabric CA 用户指南
 
 Fabric CA is a Certificate Authority for Hyperledger Fabric.
 
@@ -31,56 +30,14 @@ Fabric CA 包含一个服务端组件和一个客户端组件，稍后会进行�
 
 对贡献Fabric CA感兴趣的开发者，可以参考 [Fabric CA repository](https://github.com/hyperledger/fabric-ca)
 
-# 目录
-<!-- TOC -->
 
-- [Fabric CA 用户指南](#fabric-ca-用户指南)
-- [目录](#目录)
-- [概述](#概述)
-- [入门](#入门)
-    - [前置条件](#前置条件)
-    - [安装](#安装)
-        - [原生启动服务器](#原生启动服务器)
-        - [通过 Docker 启动服务器](#通过-docker-启动服务器)
-    - [体验 Fabric CA 命令行](#体验-fabric-ca-命令行)
-- [文件格式](#文件格式)
-    - [Fabric CA 服务端配置文件格式](#fabric-ca-服务端配置文件格式)
-    - [Fabric CA 客户端配置文件格式](#fabric-ca-客户端配置文件格式)
-- [配置优先级说明](#配置优先级说明)
-    - [关于路径的一些说明](#关于路径的一些说明)
-- [Fabric CA 服务端](#fabric-ca-服务端)
-    - [初始化服务端](#初始化服务端)
-    - [启动服务端](#启动服务端)
-    - [配置数据库](#配置数据库)
-        - [Postgres](#postgres)
-        - [MySQL](#mysql)
-    - [配置LDAP](#配置ldap)
-    - [构建一个集群](#构建一个集群)
-- [Farbic CA 客户端](#farbic-ca-客户端)
-    - [登陆启动用户](#登陆启动用户)
-    - [注册一个新的身份](#注册一个新的身份)
-    - [登录一个节点](#登录一个节点)
-    - [从另一个Fabric CA服务器获得CA证书链](#从另一个fabric-ca服务器获得ca证书链)
-    - [重新登陆一个身份](#重新登陆一个身份)
-    - [撤销一个证书或身份](#撤销一个证书或身份)
-    - [启用TLS](#启用tls)
-- [附录](#附录)
-    - [Postgres SSL 配置](#postgres-ssl-配置)
-        - [配置Postgre服务器的基本步骤：](#配置postgre服务器的基本步骤)
-        - [Postgres 服务器 - 需要客户端证书](#postgres-服务器---需要客户端证书)
-    - [MySQL SSL 配置](#mysql-ssl-配置)
-        - [配置MySQL服务器的基本步骤：](#配置mysql服务器的基本步骤)
-        - [MySQL 服务器 - 需要客户端证书](#mysql-服务器---需要客户端证书)
-
-<!-- /TOC -->
-
-# 概述
+## 概述
 
 The diagram below illustrates how the Fabric CA server fits into the overall Hyperledger Fabric architecture.
 
 下图说明了 Fabric CA 服务端如何在 Hyperledger Fabric 架构中发挥作用
 
-![](http://hyperledger-fabric.readthedocs.io/en/latest/_images/fabric-ca.png)
+![](img/fabric-ca.png)
 
 There are two ways of interacting with a Fabric CA server: via the Fabric CA client or through one of the Fabric SDKs. All communication to the Fabric CA server is via REST APIs. See fabric-ca/swagger/swagger-fabric-ca.json for the swagger documentation for these REST APIs.
 
@@ -90,8 +47,10 @@ The Fabric CA client or SDK may connect to a server in a cluster of Fabric CA se
 
 Fabric CA 客户端或者 SDK 可能会连接到 Fabric CA 集群中某一个 Fabric CA 服务端，这一部分可以通过上图右上部分获得更好的理解。客户端连接的是一个 HA 代理节点，这个 HA 代理节点为 Fabric CA 集群作负载均衡。所有的 Fabric CA 服务端共享同一个数据库。数据库用来保存用户和证书信息。如果配置了 LDAP，那么用户信息将会保存在 LDAP 中，而不是数据库中。
 
-# 入门
-## 前置条件
+## 入门
+
+### 前置条件
+
 - Go 1.7+ 或更高版本
 - GOPATH 环境变量正确设置
 - libtool 和 libtdhl-dev 这两个包安装好
@@ -104,13 +63,13 @@ Fabric CA 客户端或者 SDK 可能会连接到 Fabric CA 集群中某一个 Fa
 
 了解更多有关 libtdhr-dev 的信息，参考 [https://www.gnu.org/software/libtool/manual/html_node/Using-libltdl.html](https://www.gnu.org/software/libtool/manual/html_node/Using-libltdl.html)
 
-## 安装
+### 安装
 
 以下命令会同时安装 fabric-ca-server 和 fabric-ca-client
 
     # go get -u github.com/hyperledger/fabric-ca/cmd/...
 
-### 原生启动服务器 
+#### 原生启动服务器 
 
 默认配置启动 fabric-ca-server
 
@@ -120,7 +79,7 @@ The -b option provides the enrollment ID and secret for a bootstrap administrato
 
 *-b* 选项用来提供启动管理员的登录 ID 和密码。默认配置文件 *fabric-ca-server-config.yaml* 会自动在本地目录创建，这个配置文件可以自定义。
 
-### 通过 Docker 启动服务器
+#### 通过 Docker 启动服务器
 
 使用 docker-compose 来启动
 
@@ -131,7 +90,7 @@ The -b option provides the enrollment ID and secret for a bootstrap administrato
 
 hyperledger/fabric-ca docker 镜像包含 fabric-ca-server 和 the fabric-ca-client
 
-## 体验 Fabric CA 命令行
+### 体验 Fabric CA 命令行
 
 这一部分提供 fabric-ca-server 和 fabric-ca-client 命令行的使用说明。另外的使用信息会在接下来的内容中提供。
 
@@ -222,8 +181,9 @@ Note that command line options that are string slices (lists) can be specified e
 
 注意在命令行中需要给某个选项输入列表时，可以用空格分割，或者多次使用该选项。例如，指定`host1`和`host2`给csr.hosts选项，你可以用–csr.hosts “host1 host2”或者–csr.hosts host1 –csr.hosts host2
 
-# 文件格式
-## Fabric CA 服务端配置文件格式
+## 文件格式
+
+### Fabric CA 服务端配置文件格式
 
 A configuration file can be provided to the server using the -c or --config option. If the --config option is used and the specified file doesn’t exist, a default configuration file (like the one shown below) will be created in the specified location. However, if no config option was used, it will be created in the server’s home directory (see Fabric CA Server section more info).
 
@@ -380,7 +340,7 @@ A configuration file can be provided to the server using the -c or --config opti
             ephemeral: false
             key_store_dir: keys
 
-## Fabric CA 客户端配置文件格式
+### Fabric CA 客户端配置文件格式
 
 A configuration file can be provided to the client using the -c or --config option. If the config option is used and the specified file doesn’t exist, a default configuration file (like the one shown below) will be created in the specified location. However, if no config option was used, it will be created in the client’s home directory (see Fabric CA Client section more info).
 
@@ -447,7 +407,7 @@ A configuration file can be provided to the client using the -c or --config opti
         profile:
         label:
 
-# 配置优先级说明
+## 配置优先级说明
 
 The Fabric CA provides 3 ways to configure settings on the Fabric CA server and client. The precedence order is:
 
@@ -499,7 +459,7 @@ The same approach applies to fabric-ca-server, except instead of using FABIRC_CA
 
 以上方法对fabric-ca-server同样适用，区别是在环境变量的前缀，把`FABIRC_CA_CLIENT`替换为`FABRIC_CA_SERVER`。
 
-## 关于路径的一些说明
+### 关于路径的一些说明
 
 All the properties in the Fabric CA server and client configuration file, that specify file names support both relative and absolute paths. Relative paths are relative to the config directory, where the configuration file is located. For example, if the config directory is ~/config and the tls section is as shown below, the Fabric CA server or client will look for the root.pem file in the ~/config directory, cert.pem file in the ~/config/certs directory and the key.pem file in the /abs/path directory
 
@@ -512,7 +472,7 @@ fabric-ca-server 和 fabirc-ca-client 的配置文件里的所有属性都支持
             certfile: certs/cert.pem
             keyfile: /abs/path/key.pem
 
-# Fabric CA 服务端
+## Fabric CA 服务端
 
 This section describes the Fabric CA server.
 
@@ -542,7 +502,7 @@ Fabric CA服务端的根目录通过以下方式决定：
 
 接下来的内容都默认服务端配置文件存在于服务端根目录下。
 
-## 初始化服务端
+### 初始化服务端
 
 用以下命令初始化Fabric CA服务端
 
@@ -622,7 +582,7 @@ RSA提供以下选项：
 | 2048 |2048| sha256WithRSAEncryption   |
 | 4096 |2096| sha512WithRSAEncryption   |
 
-## 启动服务端
+### 启动服务端
 
 启动Fabric CA服务器：
 
@@ -658,7 +618,7 @@ You may skip to the Fabric CA Client section if you do not want to configure the
 
 如果你不想配置Fabric CA服务端集群，也不想使用LDAP，你可以直接跳到[Fabric CA 客户端](#farbic-ca-客户端)这一章节。
 
-## 配置数据库
+### 配置数据库
 
 This section describes how to configure the Fabric CA server to connect to Postgres or MySQL databases. The default database is SQLite and the default database file is `fabric-ca-server.db` in the Fabric CA server’s home directory.
 
@@ -668,7 +628,7 @@ If you don’t care about running the Fabric CA server in a cluster, you may ski
 
 如果你不想运行Fabric CA服务端集群，你可以跳过这一章；不然的话你可以照下面的指引配置Postgres或者MySQL。
 
-### Postgres
+#### Postgres
 
 The following sample may be added to the server’s configuration file in order to connect to a Postgres database. Be sure to customize the various values appropriately.
 
@@ -704,7 +664,7 @@ If you would like to use TLS, then the db.tls section in the Fabric CA server co
 
 *certfile* and *keyfile* - 用于与Postgres服务器安全通信的证书和密钥文件，采用PEM编码
 
-### MySQL
+#### MySQL
 
 The following sample may be added to the Fabric CA server configuration file in order to connect to a MySQL database. Be sure to customize the various values appropriately.
 
@@ -718,7 +678,7 @@ If connecting over TLS to the MySQL server, the db.tls.client section is also re
 
 如果要使用TLS，需要配置`db.tls.client`部分，参考Postgres部分。
 
-## 配置LDAP
+### 配置LDAP
 
 The Fabric CA server can be configured to read from an LDAP server.
 
@@ -802,7 +762,7 @@ When LDAP is configured, attribute retrieval works as follows:
   - 做一次LDAP查询，向LDAP服务器请求tcert请求中的所有的属性名;
   - 属性值放置在tcert中。
 
-## 构建一个集群
+### 构建一个集群
 
 You may use any IP sprayer to load balance to a cluster of Fabric CA servers. This section provides an example of how to set up Haproxy to route to a Fabric CA server cluster. Be sure to change hostname and port to reflect the settings of your Fabric CA servers.
 
@@ -830,7 +790,7 @@ haproxy.conf
 
 注意：如果使用TLS，需要使用`mode tcp`
 
-# Farbic CA 客户端
+## Farbic CA 客户端
 
 This section describes how to use the fabric-ca-client command.
 
@@ -854,7 +814,7 @@ Fabric CA客户端的根目录定义规则如下：
 
 下面的指引假设客户端的配置文件存在于客户端根目录。
 
-## 登陆启动用户
+### 登陆启动用户
 
 First, if needed, customize the CSR (Certificate Signing Request) section in the client configuration file. Note that `csr.cn` field must be set to the ID of the bootstrap identity. Default CSR values are shown below:
 
@@ -893,7 +853,7 @@ The enroll command stores an enrollment certificate (ECert), corresponding priva
 
 登录命令会存储一个登录证书（ECert），相对应的私钥，还有CA证书链PEM文件。这些存储在Fabric CA客户端的msp目录的子目录下，你会看到信息提示PEM存储在哪里。
 
-## 注册一个新的身份
+### 注册一个新的身份
 
 The identity performing the register request must be currently enrolled, and must also have the proper authority to register the type of the identity that is being registered.
 
@@ -952,7 +912,7 @@ Next, let’s register a peer identity which will be used to enroll the peer in 
     # export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca/clients/admin
     # fabric-ca-client register --id.name peer1 --id.type peer --id.affiliation org1.department1 --id.secret peer1pw
 
-## 登录一个节点
+### 登录一个节点
 
 Now that you have successfully registered a peer identity, you may now enroll the peer given the enrollment ID and secret (i.e. the password from the previous section). This is similar to enrolling the bootstrap identity except that we also demonstrate how to use the “-M” option to populate the Hyperledger Fabric MSP (Membership Service Provider) directory structure.
 
@@ -969,7 +929,7 @@ Enrolling an orderer is the same, except the path to the MSP directory is the �
 
 登陆一个orderer也是一样的，除了MSP目录是设置在你的orderer的orderer.yaml文件里的“LocalMSPDir”。
 
-## 从另一个Fabric CA服务器获得CA证书链
+### 从另一个Fabric CA服务器获得CA证书链
 
 In general, the cacerts directory of the MSP directory must contain the certificate authority chains of other certificate authorities, representing all of the roots of trust for the peer.
 
@@ -993,7 +953,7 @@ The following command will install CA2’s certificate chain into peer1’s MSP 
     # export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca/clients/peer1
     # fabric-ca-client getcacert -u http://localhost:7055 -M $FABRIC_CA_CLIENT_HOME/msp
 
-## 重新登陆一个身份
+### 重新登陆一个身份
 
 Suppose your enrollment certificate is about to expire or has been compromised. You can issue the reenroll command to renew your enrollment certificate as follows.
 
@@ -1002,7 +962,7 @@ Suppose your enrollment certificate is about to expire or has been compromised. 
     # export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca/clients/peer1
     # fabric-ca-client reenroll
 
-## 撤销一个证书或身份
+### 撤销一个证书或身份
 
 An identity or a certificate can be revoked. Revoking an identity will revoke all the certificates owned by the identity and will also prevent the identity from getting any new certificates. Revoking a certificate will invalidate a single certificate.
 
@@ -1058,7 +1018,7 @@ For example, you can get the AKI and the serial number of a certificate using th
     aki=$(openssl x509 -in userecert.pem -text | awk '/keyid/ {gsub(/ *keyid:|:/,"",$1);print tolower($0)}')
     fabric-ca-client revoke -s $serial -a $aki -r affiliationchange
 
-## 启用TLS
+### 启用TLS
 
 This section describes in more detail how to configure TLS for a Fabric CA client.
 
@@ -1085,11 +1045,11 @@ The client option is required only if mutual TLS is configured on the server.
 
 只有在服务器配置了双向TLS的情况下，*client*选项才需要。
 
-# 附录
+## 附录
 
-## Postgres SSL 配置
+### Postgres SSL 配置
 
-### 配置Postgre服务器的基本步骤：
+#### 配置Postgre服务器的基本步骤：
 
 1. In postgresql.conf, uncomment SSL and set to “on” (SSL=on)
 2. Place certificate and key files in the Postgres data directory.
@@ -1105,7 +1065,7 @@ Note: Self-signed certificates are for testing purposes and should not be used i
 
 注意：自签名的证书用于测试目的，请勿用于生产环境。
 
-### Postgres 服务器 - 需要客户端证书
+#### Postgres 服务器 - 需要客户端证书
 
 1. Place certificates of the certificate authorities (CAs) you trust in the file root.crt in the Postgres data directory
 2. In postgresql.conf, set “ssl_ca_file” to point to the root cert of the client (CA cert)
@@ -1119,7 +1079,7 @@ For more details on configuring SSL on the Postgres server, please refer to the 
 
 更多信息：https://www.postgresql.org/docs/9.4/static/libpq-ssl.html
 
-## MySQL SSL 配置
+### MySQL SSL 配置
 
 On MySQL 5.7.X, certain modes affect whether the server permits ‘0000-00-00’ as a valid date. It might be necessary to relax the modes that MySQL server uses. We want to allow the server to be able to accept zero date values.
 

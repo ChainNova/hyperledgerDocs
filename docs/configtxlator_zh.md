@@ -1,18 +1,10 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtxlator.html) | Shaoxi Qiu |  |
 
-original：https://github.com/hyperledger/fabric/blob/master/docs/source/configtxlator.rst
 
-Reconfiguring with configtxlator
-================================
-使用configtxlator工具重新配置
-================================
-
-Overview
---------
-概览
+概览（Overview）
 --------
 
 The ``configtxlator`` tool was created to support reconfiguration independent
@@ -76,9 +68,8 @@ dedicated ``configtxlator`` process for each consumer of it.
 预计的典型部署方式是运行在沙盒容器中， 所以在本地的应用中， 有一个专用的 ``configtxlator`` 进程给每一个使用者。
 
 
-Running the configtxlator
--------------------------
-运行 configtxlator 工具
+
+运行 configtxlator 工具（Running the configtxlator）
 -------------------------
 
 The ``configtxlator`` tool can be downloaded with the other Hyperledger Fabric
@@ -108,9 +99,7 @@ To start the ``configtxlator`` server:
   configtxlator start
   2017-06-21 18:16:58.248 HKT [configtxlator] startServer -> INFO 001 Serving HTTP requests on 0.0.0.0:7059
 
-Proto translation
------------------
-原型翻译
+原型翻译（Proto translation）
 -----------------
 
 For extensibility, and because certain fields must be signed over, many proto
@@ -168,9 +157,8 @@ for endorser transactions.
 ``common.Configuration``, 和 ``common.ConfigUpdate`` 都是这些地址的合法的目标。
 未来，其他解析类型可能会被增加，比如背书交易。
 
-Config update computation
--------------------------
-配置更新计算
+
+配置更新计算（Config update computation）
 -------------------------
 
 Given two different configurations, it is possible to compute the config update
@@ -193,9 +181,8 @@ the updated config as the file ``updated_config.pb`` for the channel
 
   curl -X POST -F channel=desiredchannel -F original=@original_config.pb -F updated=@updated_config.pb http://127.0.0.1:7059/configtxlator/compute/update-from-configs
 
-Bootstraping example
---------------------
-引导实例
+
+引导实例（Bootstraping example）
 --------------------
 
 First start the ``configtxlator``:
@@ -275,9 +262,8 @@ bootstrapping an ordering system channel.
 
 现在， ``updated_genesis_block.pb`` 文件可以作为初始区块来引导通道启动了。
 
-Reconfiguration example
------------------------
-重配置示例
+
+重配置示例（Reconfiguration example）
 -----------------------
 
 In another terminal window, start the orderer using the default options,
@@ -396,9 +382,8 @@ update.
 
   peer channel update -f config_update_as_envelope.pb -c testchainid -o 127.0.0.1:7050
 
-Adding an organization
-----------------------
-增加组织
+
+增加组织（Adding an organization）
 ----------------------
 
 First start the ``configtxlator``:

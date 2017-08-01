@@ -1,18 +1,10 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html) | Shaoxi Qiu |  |
 
-Bringing up a Kafka-based Ordering Service
-===========================================
 
-启动基于卡夫卡的排序服务
-===========================================
-
-Caveat emptor
--------------
-
-须知
+须知（Caveat emptor）
 -------------
 
 This document assumes that the reader generally knows how to set up a Kafka
@@ -23,9 +15,8 @@ your blockchain network.
 
 该文档假设读者已经基本了解如何去搭建Kafka集群和ZooKeeper集群。本文档的目的是确定您使用Kafka集群搭建一套Hyperledger Fabric排序服务节点集(OSNs)以及为你的区块链网络提供排序服务所需要采取的步骤。
 
-Big picture
------------
-概览
+
+概览（Big picture）
 -----------
 
 Each channel maps to a separate single-partition topic in Kafka. 
@@ -53,10 +44,8 @@ to `the document that describes how we came to this design
 <https://docs.google.com/document/d/1vNMaM7XhOlu9tB_10dKnlrhy5d7b1u8lSY8a-kVjCO4/edit>`_
 -- 图8是上述过程的示意图。
 
-Steps
------
 
-步骤
+步骤（Steps）
 -----
 
 Let ``K`` and ``Z`` be the number of nodes in the Kafka cluster and the
@@ -89,15 +78,15 @@ preset profile for the system channel's genesis block --  so that:
 
  Orderers: **Kafka 相关信息被写在网络的初始区块中.** 如果你使用 ``configtxgen`` 工具, 编辑 ``configtx.yaml`` 文件-- 或者挑一个现成的系统通道的初始区块配置文件 --  其中:
 
-    a. ``Orderer.OrdererType`` is set to ``kafka``.
-    
-    a. ``Orderer.OrdererType`` 字段被设置为 ``kafka``.
+        a. ``Orderer.OrdererType`` is set to ``kafka``.
+        
+        a. ``Orderer.OrdererType`` 字段被设置为 ``kafka``.
 
-    b. ``Orderer.Kafka.Brokers`` contains the address of *at least two* of the
-    Kafka brokers in your cluster in ``IP:port`` notation. The list does not
-    need to be exhaustive. (These are your seed brokers.)
-    
-    b. ``Orderer.Kafka.Brokers`` 字段包含 *至少两个* Kafka集群中的节点``IP:port`` 样式的地址。这个列表没有必要详尽无遗(这些是你的 seed brokers.)
+        b. ``Orderer.Kafka.Brokers`` contains the address of *at least two* of the
+        Kafka brokers in your cluster in ``IP:port`` notation. The list does not
+        need to be exhaustive. (These are your seed brokers.)
+        
+        b. ``Orderer.Kafka.Brokers`` 字段包含 *至少两个* Kafka集群中的节点``IP:port`` 样式的地址。这个列表没有必要详尽无遗(这些是你的 seed brokers.)
 
 2. Orderers: **Set the maximum block size.** Each block will have at most
 `Orderer.AbsoluteMaxBytes` bytes (not including headers), a value that you can
@@ -258,9 +247,8 @@ cluster, ordering service nodes.**
 
  **启动节点请按照以下顺序: ZooKeeper 集群, Kafka 集群, 排序节点**
 
-Additional considerations
--------------------------
-其他注意事项
+
+其他注意事项（Additional considerations）
 -------------------------
 
 1. **Preferred message size.** In Step 2 above (see `Steps`_ section) you can
@@ -308,9 +296,8 @@ The current supported Kafka versions are:
 * ``Version: 0.10.0.1``
 * ``Version: 0.10.1.0``
 
-Debugging
----------
-调试
+
+调试（Debugging）
 ---------
 
 Set ``General.LogLevel`` to ``DEBUG`` and ``Kafka.Verbose`` in ``orderer.yaml``
@@ -318,10 +305,8 @@ to ``true``.
 
 设置 ``orderer.yaml`` 文件中 ``General.LogLevel`` 为 ``DEBUG`` 和 ``Kafka.Verbose`` 为 ``true``.
 
-Example
--------
 
-例子
+例子（Example）
 -------
 
 Sample Docker Compose configuration files inline with the recommended settings

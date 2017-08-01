@@ -1,10 +1,8 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
-[原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtxgen.html)
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtxgen.html) | Fei Cao |  |
 
-# Channel Configuration (configtxgen) - 通道配置(configtxgen)
 
 This document describe the usage for the configtxgen utility for manipulating Hyperledger Fabric channel configuration.
 
@@ -14,7 +12,7 @@ For now, the tool is primarily focused on generating the genesis block for boots
 
 目前，该工具主要侧重于生成引导共识节点的创世纪块，但是将来预计增加生成新通道的配置以及重新配置已有的通道。
 
-# Configuration Profiles - 配置文件
+## Configuration Profiles - 配置文件
 
 The configuration parameters supplied to the configtxgen tool are primarily provided by the configtx.yaml file. This file is located at fabric/sampleconfig/configtx.yaml in the fabric.git repository.
 
@@ -40,7 +38,7 @@ This configuration file may be edited, or, individual properties may be overridd
 
 这个配置文件可以被编辑，或者通过设置环境变量来重写属性值，如`CONFIGTX_ORDERER_ORDERERTYPE=kafka`。注意，不需要指定配置文件元素和配置文件名称。
 
-# Bootstrapping the orderer - 引导共识
+## Bootstrapping the orderer - 引导共识
 
 After creating a configuration profile as desired, simply invoke
 
@@ -58,7 +56,7 @@ Then, to utilize this genesis block, before starting the orderer, simply specify
 
 然后为了使用生成的创世快，在启动orderer之前，简单的通过指定`ORDERER_GENERAL_GENESISMETHOD=file` 和`ORDERER_GENERAL_GENESISFILE=$PWD/genesis.block` 或者修改`orderer.yaml`文件编辑这些属性值。
 
-# Creating a channel - 创建通道
+## Creating a channel - 创建通道
 
 The tool can also output a channel creation tx by executing
 
@@ -72,7 +70,7 @@ This will output a marshaled Envelope message which may be sent to broadcast to 
 
 这将输出一个`Envelope`消息，用来发送广播来创建通道。
 
-#Reviewing a configuration - 检查配置
+## Reviewing a configuration - 检查配置
 
 In addition to creating configuration, the configtxgen tool is also capable of inspecting configuration.
 

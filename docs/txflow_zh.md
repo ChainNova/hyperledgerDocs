@@ -1,7 +1,7 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) | Yueling Liang |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html) | Yueling Liang |  |
 
 
 This document outlines the transactional mechanics that take place during a standard asset exchange. The scenario includes two clients, A and B, who are buying and selling radishes. They each have a peer on the network through which they send their transactions and interact with the ledger.

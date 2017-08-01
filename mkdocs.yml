@@ -4,12 +4,12 @@ repo_url: https://github.com/ChainNova/hyperledgerDoc
 site_description: 'Hyperledger中文文档'
 
 site_author: Hyperledger国际化工作组
-copyright: Hyperledger国际化工作组
+copyright: Hyperledger国际化工作组(yls@chainnova.com)
 
 theme: readthedocs
 
 pages:
-    - 欢迎贡献: index.md
+    - 欢迎: index.md
     - 词汇表: glossary.md
     - 快速入门: getting_started.md
     - 协议规范: protocol-spec_zh.md
@@ -21,7 +21,7 @@ pages:
       - MSP: msp_zh.md
       - Channel 配置(configtx): configtx_zh.md
       - Channel 配置(configtxgen): configtxgen_zh.md
-      - configtxlator: configtxlator_zh.md
+      - Channel 重新配置(configtxlator): configtxlator_zh.md
       - 背书策略: endorsement-policies_zh.md
       - 错误处理: error-handling_zh.md
       - 日志控制: logging-control_zh.md
@@ -38,8 +38,7 @@ pages:
       - Gossip数据传输协议: gossip_zh.md
     - MSP&ACL: msp_acl_zh.md
     - Fabric SDK 设计: sdk-design_zh.md
-    - Fabric工程项目构建之Makefile文件解析: makefile_zh.md
-    - 成员服务 v1 设计: cop_membership_services_v1_design.md
+    - Makefile文件解析: makefile_zh.md
 
 markdown_extensions:
   - extra

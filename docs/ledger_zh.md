@@ -1,7 +1,7 @@
 
 | 原文 | 作者 | 审核修正 |
 | --- | --- | —--- |
-| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html) |  |  |
+| [原文](http://hyperledger-fabric.readthedocs.io/en/latest/ledger.html) | Yuan Jin | Linsheng Yu |
 
 ## Ledger - 账本
 
