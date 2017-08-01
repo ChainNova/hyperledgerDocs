@@ -56,7 +56,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="..">欢迎贡献</a>
+        <a class="" href="..">欢迎</a>
         
     </li>
 <li>
@@ -129,19 +129,22 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#channel-configuration-channelconfigtx">Channel Configuration / Channel配置（configtx）</a></li>
+                <li class="toctree-l3"><a href="#anatomy-of-a-configuration">Anatomy of a configuration / 配置剖析</a></li>
                 
-                    <li><a class="toctree-l4" href="#anatomy-of-a-configuration">Anatomy of a configuration / 配置剖析</a></li>
+            
+                <li class="toctree-l3"><a href="#configuration-updates">Configuration updates / 更新配置</a></li>
                 
-                    <li><a class="toctree-l4" href="#configuration-updates">Configuration updates / 更新配置</a></li>
+            
+                <li class="toctree-l3"><a href="#permitted-configuration-groups-and-values">Permitted configuration groups and values / 组和值得配置许可</a></li>
                 
-                    <li><a class="toctree-l4" href="#permitted-configuration-groups-and-values">Permitted configuration groups and values / 组和值得配置许可</a></li>
+            
+                <li class="toctree-l3"><a href="#orderer-system-channel-configuration-order-channel">Orderer system channel configuration / Order channel 配置</a></li>
                 
-                    <li><a class="toctree-l4" href="#orderer-system-channel-configuration-order-channel">Orderer system channel configuration / Order channel 配置</a></li>
+            
+                <li class="toctree-l3"><a href="#application-channel-configuration-app-channel">Application channel configuration / APP channel 配置</a></li>
                 
-                    <li><a class="toctree-l4" href="#application-channel-configuration-app-channel">Application channel configuration / APP channel 配置</a></li>
-                
-                    <li><a class="toctree-l4" href="#channel-creation-channel">Channel creation / 创建channel</a></li>
+            
+                <li class="toctree-l3"><a href="#channel-creation-channel">Channel creation / 创建channel</a></li>
                 
             
             </ul>
@@ -158,7 +161,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../configtxlator_zh/">configtxlator</a>
+        <a class="" href="../configtxlator_zh/">Channel 重新配置(configtxlator)</a>
         
     </li>
 
@@ -281,14 +284,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../makefile_zh/">Fabric工程项目构建之Makefile文件解析</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cop_membership_services_v1_design/">成员服务 v1 设计</a>
+        <a class="" href="../makefile_zh/">Makefile文件解析</a>
         
     </li>
 <li>
@@ -344,12 +340,11 @@
 <tbody>
 <tr>
 <td><a href="http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html">原文</a></td>
-<td></td>
+<td>Linsheng Yu</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h1 id="channel-configuration-channelconfigtx">Channel Configuration / Channel配置（configtx）<a class="headerlink" href="#channel-configuration-channelconfigtx" title="Permanent link">&para;</a></h1>
 <p>Shared configuration for a Hyperledger Fabric blockchain network is stored in a collection configuration transactions, one per channel. Each configuration transaction is usually referred to by the shorter name <strong><em>configtx</em></strong>.</p>
 <p>Hyperledger Fabric 区块链网络的共享配置存储在每个channel的配置交易集合中。配置交易简称<strong><em>configtx</em></strong>。</p>
 <p>Channel configuration has the following important properties:</p>
@@ -693,7 +688,7 @@ message ConfigValue {
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p>Hyperledger国际化工作组</p>
+      <p>Hyperledger国际化工作组(yls@chainnova.com)</p>
     
   </div>
 

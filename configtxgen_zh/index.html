@@ -56,7 +56,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="..">欢迎贡献</a>
+        <a class="" href="..">欢迎</a>
         
     </li>
 <li>
@@ -136,9 +136,6 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#channel-configuration-configtxgen-configtxgen">Channel Configuration (configtxgen) - 通道配置(configtxgen)</a></li>
-                
-            
                 <li class="toctree-l3"><a href="#configuration-profiles-">Configuration Profiles - 配置文件</a></li>
                 
             
@@ -158,7 +155,7 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../configtxlator_zh/">configtxlator</a>
+        <a class="" href="../configtxlator_zh/">Channel 重新配置(configtxlator)</a>
         
     </li>
 
@@ -281,14 +278,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../makefile_zh/">Fabric工程项目构建之Makefile文件解析</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cop_membership_services_v1_design/">成员服务 v1 设计</a>
+        <a class="" href="../makefile_zh/">Makefile文件解析</a>
         
     </li>
 <li>
@@ -343,23 +333,17 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html">原文</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="http://hyperledger-fabric.readthedocs.io/en/latest/configtxgen.html">原文</a></td>
-<td></td>
+<td>Fei Cao</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<h1 id="channel-configuration-configtxgen-configtxgen">Channel Configuration (configtxgen) - 通道配置(configtxgen)<a class="headerlink" href="#channel-configuration-configtxgen-configtxgen" title="Permanent link">&para;</a></h1>
 <p>This document describe the usage for the configtxgen utility for manipulating Hyperledger Fabric channel configuration.</p>
 <p>本文档描述了<code>configtxgen</code>工具的用法，该工具用来操作超级账本Fabric的通道配置。</p>
 <p>For now, the tool is primarily focused on generating the genesis block for bootstrapping the orderer, but it is intended to be enhanced in the future for generating new channel configurations as well as reconfiguring existing channels.</p>
 <p>目前，该工具主要侧重于生成引导共识节点的创世纪块，但是将来预计增加生成新通道的配置以及重新配置已有的通道。</p>
-<h1 id="configuration-profiles-">Configuration Profiles - 配置文件<a class="headerlink" href="#configuration-profiles-" title="Permanent link">&para;</a></h1>
+<h2 id="configuration-profiles-">Configuration Profiles - 配置文件<a class="headerlink" href="#configuration-profiles-" title="Permanent link">&para;</a></h2>
 <p>The configuration parameters supplied to the configtxgen tool are primarily provided by the configtx.yaml file. This file is located at fabric/sampleconfig/configtx.yaml in the fabric.git repository.</p>
 <p>configtxgen工具的配置参数主要由<code>configtx.yaml</code>文件提供。在fabric库中，配置文件在<code>fabric/sampleconfig/configtx.yaml</code>。</p>
 <p>This configuration file is split primarily into three pieces.</p>
@@ -372,7 +356,7 @@
 <p>3.默认部分。此部分包括共识和应用部分的默认配置，包括一些属性配置，如<code>BatchTimeout</code>和一般用作继承的基础值。</p>
 <p>This configuration file may be edited, or, individual properties may be overridden by setting environment variables, such as CONFIGTX_ORDERER_ORDERERTYPE=kafka. Note that the Profiles element and profile name do not need to be specified.</p>
 <p>这个配置文件可以被编辑，或者通过设置环境变量来重写属性值，如<code>CONFIGTX_ORDERER_ORDERERTYPE=kafka</code>。注意，不需要指定配置文件元素和配置文件名称。</p>
-<h1 id="bootstrapping-the-orderer-">Bootstrapping the orderer - 引导共识<a class="headerlink" href="#bootstrapping-the-orderer-" title="Permanent link">&para;</a></h1>
+<h2 id="bootstrapping-the-orderer-">Bootstrapping the orderer - 引导共识<a class="headerlink" href="#bootstrapping-the-orderer-" title="Permanent link">&para;</a></h2>
 <p>After creating a configuration profile as desired, simply invoke</p>
 <p>创建配置文件后，简单调用</p>
 <pre><code>configtxgen -profile &lt;profile_name&gt;
@@ -382,7 +366,7 @@
 <p>这会在当前文件目录下生成<code>genesis.block</code>。你也可以通过<code>-path</code>参数指定其他文件名。如果你只希望测试这个文件，可以通过<code>dryRun</code>参数来跳过创建文件。</p>
 <p>Then, to utilize this genesis block, before starting the orderer, simply specify ORDERER_GENERAL_GENESISMETHOD=file and ORDERER_GENERAL_GENESISFILE=$PWD/genesis.block or modify the orderer.yaml file to encode these values.</p>
 <p>然后为了使用生成的创世快，在启动orderer之前，简单的通过指定<code>ORDERER_GENERAL_GENESISMETHOD=file</code> 和<code>ORDERER_GENERAL_GENESISFILE=$PWD/genesis.block</code> 或者修改<code>orderer.yaml</code>文件编辑这些属性值。</p>
-<h1 id="creating-a-channel-">Creating a channel - 创建通道<a class="headerlink" href="#creating-a-channel-" title="Permanent link">&para;</a></h1>
+<h2 id="creating-a-channel-">Creating a channel - 创建通道<a class="headerlink" href="#creating-a-channel-" title="Permanent link">&para;</a></h2>
 <p>The tool can also output a channel creation tx by executing</p>
 <p>此工具同样可以创建通道交易通过执行</p>
 <pre><code>configtxgen -profile &lt;profile_name&gt; -channelID &lt;channel_name&gt; -outputCreateChannelTx &lt;tx_filename&gt;
@@ -390,7 +374,7 @@
 
 <p>This will output a marshaled Envelope message which may be sent to broadcast to create a channel.</p>
 <p>这将输出一个<code>Envelope</code>消息，用来发送广播来创建通道。</p>
-<h1 id="reviewing-a-configuration-">Reviewing a configuration - 检查配置<a class="headerlink" href="#reviewing-a-configuration-" title="Permanent link">&para;</a></h1>
+<h2 id="reviewing-a-configuration-">Reviewing a configuration - 检查配置<a class="headerlink" href="#reviewing-a-configuration-" title="Permanent link">&para;</a></h2>
 <p>In addition to creating configuration, the configtxgen tool is also capable of inspecting configuration.</p>
 <p>除了创建配置，<code>configtxgen</code>工具同样提供检查配置的功能。</p>
 <p>It supports inspecting both configuration blocks, and configuration transactions. You may use the inspect flags -inspectBlock and -inspectChannelCreateTx respectively with the path to a file to inspect to output a human readable (JSON) representation of the configuration.</p>
@@ -511,7 +495,7 @@ Config for channel: foo
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../configtxlator_zh/" class="btn btn-neutral float-right" title="configtxlator">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../configtxlator_zh/" class="btn btn-neutral float-right" title="Channel 重新配置(configtxlator)">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../configtx_zh/" class="btn btn-neutral" title="Channel 配置(configtx)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -524,7 +508,7 @@ Config for channel: foo
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p>Hyperledger国际化工作组</p>
+      <p>Hyperledger国际化工作组(yls@chainnova.com)</p>
     
   </div>
 

@@ -8,7 +8,7 @@
   
   <meta name="author" content="Hyperledger国际化工作组">
   
-  <title>configtxlator - Hyperledger中文文档</title>
+  <title>Channel 重新配置(configtxlator) - Hyperledger中文文档</title>
   
 
   <link rel="shortcut icon" href="../img/favicon.ico">
@@ -23,7 +23,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "configtxlator";
+    var mkdocs_page_name = "Channel 重新配置(configtxlator)";
     var mkdocs_page_input_path = "configtxlator_zh.md";
     var mkdocs_page_url = "/configtxlator_zh/";
   </script>
@@ -56,7 +56,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="..">欢迎贡献</a>
+        <a class="" href="..">欢迎</a>
         
     </li>
 <li>
@@ -139,42 +139,29 @@
         
             
     <li class="toctree-l1 current">
-        <a class="current" href="./">configtxlator</a>
+        <a class="current" href="./">Channel 重新配置(configtxlator)</a>
         
             <ul>
             
-                <li class="toctree-l3"><a href="#reconfiguring-with-configtxlator">Reconfiguring with configtxlator</a></li>
+                <li class="toctree-l3"><a href="#overview">概览（Overview）</a></li>
                 
             
-                <li class="toctree-l3"><a href="#configtxlator">使用configtxlator工具重新配置</a></li>
+                <li class="toctree-l3"><a href="#configtxlator-running-the-configtxlator">运行 configtxlator 工具（Running the configtxlator）</a></li>
                 
-                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+            
+                <li class="toctree-l3"><a href="#proto-translation">原型翻译（Proto translation）</a></li>
                 
-                    <li><a class="toctree-l4" href="#_1">概览</a></li>
+            
+                <li class="toctree-l3"><a href="#config-update-computation">配置更新计算（Config update computation）</a></li>
                 
-                    <li><a class="toctree-l4" href="#running-the-configtxlator">Running the configtxlator</a></li>
+            
+                <li class="toctree-l3"><a href="#bootstraping-example">引导实例（Bootstraping example）</a></li>
                 
-                    <li><a class="toctree-l4" href="#configtxlator_1">运行 configtxlator 工具</a></li>
+            
+                <li class="toctree-l3"><a href="#reconfiguration-example">重配置示例（Reconfiguration example）</a></li>
                 
-                    <li><a class="toctree-l4" href="#proto-translation">Proto translation</a></li>
-                
-                    <li><a class="toctree-l4" href="#_2">原型翻译</a></li>
-                
-                    <li><a class="toctree-l4" href="#config-update-computation">Config update computation</a></li>
-                
-                    <li><a class="toctree-l4" href="#_3">配置更新计算</a></li>
-                
-                    <li><a class="toctree-l4" href="#bootstraping-example">Bootstraping example</a></li>
-                
-                    <li><a class="toctree-l4" href="#_4">引导实例</a></li>
-                
-                    <li><a class="toctree-l4" href="#reconfiguration-example">Reconfiguration example</a></li>
-                
-                    <li><a class="toctree-l4" href="#_5">重配置示例</a></li>
-                
-                    <li><a class="toctree-l4" href="#adding-an-organization">Adding an organization</a></li>
-                
-                    <li><a class="toctree-l4" href="#_6">增加组织</a></li>
+            
+                <li class="toctree-l3"><a href="#adding-an-organization">增加组织（Adding an organization）</a></li>
                 
             
             </ul>
@@ -300,14 +287,7 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../makefile_zh/">Fabric工程项目构建之Makefile文件解析</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../cop_membership_services_v1_design/">成员服务 v1 设计</a>
+        <a class="" href="../makefile_zh/">Makefile文件解析</a>
         
     </li>
 <li>
@@ -338,7 +318,7 @@
         
       
     
-    <li>configtxlator</li>
+    <li>Channel 重新配置(configtxlator)</li>
     <li class="wy-breadcrumbs-aside">
       
         
@@ -362,17 +342,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="http://hyperledger-fabric.readthedocs.io/en/latest/configtx.html">原文</a></td>
-<td></td>
+<td><a href="http://hyperledger-fabric.readthedocs.io/en/latest/configtxlator.html">原文</a></td>
+<td>Shaoxi Qiu</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p>original：https://github.com/hyperledger/fabric/blob/master/docs/source/configtxlator.rst</p>
-<h1 id="reconfiguring-with-configtxlator">Reconfiguring with configtxlator<a class="headerlink" href="#reconfiguring-with-configtxlator" title="Permanent link">&para;</a></h1>
-<h1 id="configtxlator">使用configtxlator工具重新配置<a class="headerlink" href="#configtxlator" title="Permanent link">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<h2 id="_1">概览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="overview">概览（Overview）<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The <code>configtxlator</code> tool was created to support reconfiguration independent
 of SDKs. Channel configuration is stored as a transaction in configuration
 blocks of a channel and may be manipulated directly, such as in the bdd behave
@@ -420,8 +396,7 @@ a sandboxed container, locally with the application, so that there is a
 dedicated <code>configtxlator</code> process for each consumer of it.</p>
 <p>因为 <code>configtxlator</code> 工具特意没有包含任何密码工具和密钥信息， 所有它没有任何权限控制。
 预计的典型部署方式是运行在沙盒容器中， 所以在本地的应用中， 有一个专用的 <code>configtxlator</code> 进程给每一个使用者。</p>
-<h2 id="running-the-configtxlator">Running the configtxlator<a class="headerlink" href="#running-the-configtxlator" title="Permanent link">&para;</a></h2>
-<h2 id="configtxlator_1">运行 configtxlator 工具<a class="headerlink" href="#configtxlator_1" title="Permanent link">&para;</a></h2>
+<h2 id="configtxlator-running-the-configtxlator">运行 configtxlator 工具（Running the configtxlator）<a class="headerlink" href="#configtxlator-running-the-configtxlator" title="Permanent link">&para;</a></h2>
 <p>The <code>configtxlator</code> tool can be downloaded with the other Hyperledger Fabric
 platform-specific binaries. Please see :ref:<code>download-platform-specific-binaries</code>
 for details.</p>
@@ -439,8 +414,7 @@ ready to process request.</p>
 <p>.. code:: bash</p>
 <p>configtxlator start
   2017-06-21 18:16:58.248 HKT [configtxlator] startServer -&gt; INFO 001 Serving HTTP requests on 0.0.0.0:7059</p>
-<h2 id="proto-translation">Proto translation<a class="headerlink" href="#proto-translation" title="Permanent link">&para;</a></h2>
-<h2 id="_2">原型翻译<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="proto-translation">原型翻译（Proto translation）<a class="headerlink" href="#proto-translation" title="Permanent link">&para;</a></h2>
 <p>For extensibility, and because certain fields must be signed over, many proto
 fields are stored as bytes.  This makes the natural proto to JSON translation
 using the <code>jsonpb</code> package ineffective for producing a human readable version
@@ -479,8 +453,7 @@ for endorser transactions.</p>
 <code>common.Envelope</code>, <code>common.ConfigEnvelope</code>, <code>common.ConfigUpdateEnvelope</code>,
 <code>common.Configuration</code>, 和 <code>common.ConfigUpdate</code> 都是这些地址的合法的目标。
 未来，其他解析类型可能会被增加，比如背书交易。</p>
-<h2 id="config-update-computation">Config update computation<a class="headerlink" href="#config-update-computation" title="Permanent link">&para;</a></h2>
-<h2 id="_3">配置更新计算<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="config-update-computation">配置更新计算（Config update computation）<a class="headerlink" href="#config-update-computation" title="Permanent link">&para;</a></h2>
 <p>Given two different configurations, it is possible to compute the config update
 which transitions between them.  Simply POST the two <code>common.Config</code> proto
 encoded configurations as <code>multipart/formdata</code>, with the original as field
@@ -494,8 +467,7 @@ the updated config as the file <code>updated_config.pb</code> for the channel
 <p>例如，对于通道 <code>desiredchannel</code> 的原始配置文件 <code>original_config.pb</code> 和更新配置文件  <code>updated_config.pb</code> ：</p>
 <p>.. code:: bash</p>
 <p>curl -X POST -F channel=desiredchannel -F original=@original_config.pb -F updated=@updated_config.pb http://127.0.0.1:7059/configtxlator/compute/update-from-configs</p>
-<h2 id="bootstraping-example">Bootstraping example<a class="headerlink" href="#bootstraping-example" title="Permanent link">&para;</a></h2>
-<h2 id="_4">引导实例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="bootstraping-example">引导实例（Bootstraping example）<a class="headerlink" href="#bootstraping-example" title="Permanent link">&para;</a></h2>
 <p>First start the <code>configtxlator</code>:</p>
 <p>首先，启动启动 <code>configtxlator</code> 工具:</p>
 <p>.. code:: bash</p>
@@ -542,8 +514,7 @@ used for bootstrapping:</p>
 <p>The <code>updated_genesis_block.pb</code> file may now be used as the genesis block for
 bootstrapping an ordering system channel.</p>
 <p>现在， <code>updated_genesis_block.pb</code> 文件可以作为初始区块来引导通道启动了。</p>
-<h2 id="reconfiguration-example">Reconfiguration example<a class="headerlink" href="#reconfiguration-example" title="Permanent link">&para;</a></h2>
-<h2 id="_5">重配置示例<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="reconfiguration-example">重配置示例（Reconfiguration example）<a class="headerlink" href="#reconfiguration-example" title="Permanent link">&para;</a></h2>
 <p>In another terminal window, start the orderer using the default options,
 including the provisional bootstrapper which will create a <code>testchainid</code>
 ordering system channel.</p>
@@ -610,8 +581,7 @@ update.</p>
 <p>最后，将配置更新交易提交到排序服务。</p>
 <p>.. code:: bash</p>
 <p>peer channel update -f config_update_as_envelope.pb -c testchainid -o 127.0.0.1:7050</p>
-<h2 id="adding-an-organization">Adding an organization<a class="headerlink" href="#adding-an-organization" title="Permanent link">&para;</a></h2>
-<h2 id="_6">增加组织<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="adding-an-organization">增加组织（Adding an organization）<a class="headerlink" href="#adding-an-organization" title="Permanent link">&para;</a></h2>
 <p>First start the <code>configtxlator</code>:</p>
 <p>首先启动 <code>configtxlator</code> 服务：</p>
 <p>.. code:: bash</p>
@@ -649,7 +619,7 @@ we must first create a channel, then modify its membership set.</p>
   <div role="contentinfo">
     <!-- Copyright etc -->
     
-      <p>Hyperledger国际化工作组</p>
+      <p>Hyperledger国际化工作组(yls@chainnova.com)</p>
     
   </div>
 
