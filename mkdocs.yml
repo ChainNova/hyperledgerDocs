@@ -7,8 +7,8 @@ site_author: Hyperledger国际化工作组
 copyright: Hyperledger国际化工作组
 
 theme: readthedocs
-site_dir: site
-#docs_dir:
+site_dir: 
+docs_dir: docs
 pages:
     - 欢迎贡献: index.md
     - 词汇表: glossary.md
